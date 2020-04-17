@@ -21,8 +21,8 @@ namespace Work_Creator
         const string CM = "см/с";
         const string RAD = "рад/с";
         private Word.Application wordApp; // для открытия приложения
-        //private Word.Documents wordDocuments; // для создания документа
-        private Word.Document wordDocument;
+        //private Word.Documents wordDocuments; 
+        private Word.Document wordDocument; // для создания документа
         private Word.Paragraph wordParagraph; // для работы с параграфом
         public Word.Paragraphs wordParagraphs;
         public FileWord()

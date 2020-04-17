@@ -52,6 +52,14 @@ namespace Work_Creator
             }
         }
 
+        public Element(String Elementname)
+        {
+            this.name = Elementname;
+            this.length = 0;
+            this.angularVelocity = 0;
+            this.velocity = 0;
+        }
+
         internal float CountVelocity()
         {
             return (length * angularVelocity);

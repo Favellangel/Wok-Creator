@@ -106,21 +106,15 @@ namespace Work_Creator
         }
         public ViewModel()
         {
-            elementO1A = new Element { Name = "O1A", AngularVelocity = 0, Length = 0, Velocity = 0 };
-            elementO2 = new Element { Name = "O2B", AngularVelocity = 0, Length = 0, Velocity = 0 };
-            elementO3 = new Element { Name = "O3F", AngularVelocity = 0, Length = 0, Velocity = 0 };
-            element1 = new Element { Name = "11", AngularVelocity = 0, Length = 0, Velocity = 0 };
-            element2 = new Element { Name = "22", AngularVelocity = 0, Length = 0, Velocity = 0 };
-            element3 = new Element { Name = "33", AngularVelocity = 0, Length = 0, Velocity = 0 };
-            element4 = new Element { Name = "44", AngularVelocity = 0, Length = 0, Velocity = 0 };
-            element5 = new Element { Name = "55", AngularVelocity = 0, Length = 0, Velocity = 0 };
-            element6 = new Element { Name = "66", AngularVelocity = 0, Length = 0, Velocity = 0 };
-            /*element1 = new Element();
-            element2 = new Element();
-            element3 = new Element();
-            element4 = new Element();
-            element5 = new Element();
-            element6 = new Element();*/
+            elementO1A = new Element("O1A");
+            elementO2 = new Element("O2B"); 
+            elementO3 = new Element("O3F");
+            element1 = new Element("11"); 
+            element2 = new Element("22"); 
+            element3 = new Element("33"); 
+            element4 = new Element("44"); 
+            element5 = new Element("55");
+            element6 = new Element("66"); 
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName]string prop = "")

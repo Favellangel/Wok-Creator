@@ -35,6 +35,13 @@ namespace Work_Creator
             labelAssembly.Content = "version: " + Convert.ToString(Assembly.GetExecutingAssembly().GetName().Version);
         }
 
+        private void ElementExists(Element element, ref Queue<Element> elements)
+        {
+            if (element.Name != "")
+                elements.Enqueue(element);
+                
+        }
+
         private void Button_Click_RGR (object sender, RoutedEventArgs e)
         {
             this.DataContext = new ViewModel();
@@ -45,28 +52,25 @@ namespace Work_Creator
             ViewModel vm = (ViewModel)DataContext; // класс для взаимодействия логики и интерфейса
             FileWord word = new FileWord();// класс для работы с документом
             Queue<Element> elements = new Queue<Element>();
-            Element tmpElem = new Element { Name = "", Length = 0, AngularVelocity = 0, Velocity = 0 };
+            Element tmpElem = new Element("");
+
+            ElementExists(vm.Element1, ref elements);
+            ElementExists(vm.Element2, ref elements);
+            ElementExists(vm.Element3, ref elements);
+            ElementExists(vm.Element4, ref elements);
+            ElementExists(vm.Element5, ref elements);
+            ElementExists(vm.Element6, ref elements);          
             
-            if(vm.Element1.Name != "")
-                elements.Enqueue(vm.Element1);
-            if(vm.Element2.Name != "")
-                elements.Enqueue(vm.Element2);
-            if(vm.Element3.Name != "")
-                elements.Enqueue(vm.Element3);
-            if (vm.Element4.Name != "")
-                elements.Enqueue(vm.Element4);
-            if (vm.Element5.Name != "")
-                elements.Enqueue(vm.Element5);
-            if (vm.Element6.Name != "")
-                elements.Enqueue(vm.Element6);
-            
+            // работа с word файлом
             word.createDoc();
             word.setDefaultOptionRGR();
             word.addElementO1A(vm.ElementO1A.AngularVelocity, vm.ElementO1A.Length, vm.ElementO1A.CountVelocity());
             while (elements.Count != 0)
             {
+                // если 2 буква звена соответствует 2 букве звена О2*
                 if (elements.First<Element>().Name[1] == vm.ElementO2.Name[2])
                     word.addElements(elements.Dequeue(), vm.ElementO2);
+                // если 2 буква звена соответствует 2 букве звена О3*
                 else if (elements.First<Element>().Name[1] == vm.ElementO3.Name[2])
                     word.addElements(elements.Dequeue(), vm.ElementO3);
                 else if(elements.First<Element>() != null)
