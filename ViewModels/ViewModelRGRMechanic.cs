@@ -11,7 +11,7 @@ using System.Windows.Data;
 
 namespace Work_Creator
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class ViewModelRGRMechanic : INotifyPropertyChanged
     {
         private Element elementO1A;
         private Element elementO2;
@@ -104,7 +104,7 @@ namespace Work_Creator
                 OnPropertyChanged("Element6");
             }
         }
-        public ViewModel()
+        public ViewModelRGRMechanic()
         {
             elementO1A = new Element("O1A");
             elementO2 = new Element("O2B"); 

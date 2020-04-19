@@ -6,84 +6,91 @@
         xmlns:local="clr-namespace:Work_Creator"
         mc:Ignorable="d"
         Title="Work Creator" Height="576" Width="800" WindowStartupLocation="Manual" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="general" TargetType="FrameworkElement">
+            <Setter Property="TextBlock.HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Content="РГР" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_RGR" Cursor="Arrow"/>
-        <Label x:Name="labelAssembly" Content="" HorizontalAlignment="Left" Margin="663,10,0,0" VerticalAlignment="Top"/>
+        <Button Name="BtnRGR" Style="{StaticResource general}" Content="РГР" Margin="20,20,0,0" Width="74" Click="Button_Click_RGR" Cursor="Arrow"/>
+        <Label Style="{StaticResource general}" x:Name="labelAssembly" Margin="660,20,0,0" />
 
-        <Grid x:Name="GridBox" Margin="20,90,15,15">
-            <Label Content="угол" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="49,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" AutomationProperties.Name="angle"/>
+        <Grid x:Name="GridRGR" Margin="20,20,15,15" Visibility="Hidden">
+            <Label Style="{StaticResource general}" Content="угол"  Margin="10,10,0,0"/>
+            <TextBox Style="{StaticResource general}" Height="23" Margin="49,13,0,0" Width="31" Name="angle"/>
 
-            <Label Content="O1:" HorizontalAlignment="Left" Margin="11,58,0,0" VerticalAlignment="Top"/>
-            <Label Content="угл скорость" HorizontalAlignment="Left" Margin="49,55,0,0" VerticalAlignment="Top"/>
-            <Label Content="длина звена" HorizontalAlignment="Left" Margin="179,55,0,0" VerticalAlignment="Top" Width="81"/>
+            <Label Style="{StaticResource general}" Content="O1:" Margin="11,58,0,0" />
+            <Label Style="{StaticResource general}" Content="угл скорость" Margin="49,55,0,0"/>
+            <Label Style="{StaticResource general}" Content="длина звена" Margin="179,55,0,0" Width="81"/>
             <Grid DataContext="{Binding ElementO1A}">
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="133,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" AutomationProperties.Name="angularVelocity" Text="{Binding AngularVelocity, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="260,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.106,0.956" AutomationProperties.Name="o1_length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Style="{StaticResource general}" Height="23" Margin="133,58,0,0" Width="38" AutomationProperties.Name="angularVelocity" Text="{Binding AngularVelocity, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Style="{StaticResource general}" Height="23" Margin="260,58,0,0" Width="50" RenderTransformOrigin="0.106,0.956" Name="o1_length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
 
-            <Label Content="O2:" HorizontalAlignment="Left" Margin="11,96,0,0" VerticalAlignment="Top"/>
-            <Label Content="Х" HorizontalAlignment="Left" Margin="90,96,0,0" VerticalAlignment="Top"/>
-            <Label Content="Y" HorizontalAlignment="Left" Margin="157,96,0,0" VerticalAlignment="Top"/>
-            <Label Content="длина звена" HorizontalAlignment="Left" Margin="235,96,0,0" VerticalAlignment="Top" Width="82"/>
+            <Label Style="{StaticResource general}" Content="O2:" Margin="11,96,0,0"/>
+            <Label Style="{StaticResource general}" Content="Х" Margin="90,96,0,0"/>
+            <Label Style="{StaticResource general}" Content="Y" Margin="157,96,0,0"/>
+            <Label Style="{StaticResource general}" Content="длина звена" Margin="235,96,0,0" Width="82"/>
             <Grid DataContext="{Binding ElementO2}">
-                <TextBox HorizontalAlignment="Left" Margin="49,95,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="nameO2" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top" />
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="112,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" AutomationProperties.Name="o2_width"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="179,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" AutomationProperties.Name="o2_height"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="323,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" AutomationProperties.Name="o2_length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Style="{StaticResource general}" Margin="49,95,0,0" Width="31" Name="nameO2" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
+                <TextBox Style="{StaticResource general}" Height="23" Margin="112,96,0,0" Width="31" Name="o2_width"/>
+                <TextBox Style="{StaticResource general}" Height="23" Margin="179,99,0,0" Width="31" Name="o2_height"/>
+                <TextBox Style="{StaticResource general}" Height="23" Margin="323,99,0,0" Width="50" Name="o2_length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
 
-            <Label Content="O3:" HorizontalAlignment="Left" Margin="11,130,0,0" VerticalAlignment="Top"/>
-            <Label Content="Х" HorizontalAlignment="Left" Margin="90,130,0,0" VerticalAlignment="Top"/>
-            <Label Content="Y" HorizontalAlignment="Left" Margin="157,130,0,0" VerticalAlignment="Top"/>
-            <Label Content="длина звена" HorizontalAlignment="Left" Margin="235,130,0,0" VerticalAlignment="Top" Width="82"/>
+            <Label Style="{StaticResource general}" Content="O3:" Margin="11,130,0,0"/>
+            <Label Style="{StaticResource general}" Content="Х" Margin="90,130,0,0"/>
+            <Label Style="{StaticResource general}" Content="Y" Margin="157,130,0,0"/>
+            <Label Style="{StaticResource general}" Content="длина звена" Margin="235,130,0,0" Width="82"/>
             <Grid DataContext="{Binding ElementO3}">
-                <TextBox HorizontalAlignment="Left" Margin="49,132,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="nameO3" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top" />
-                <TextBox HorizontalAlignment="Left" Margin="112,132,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="o3_width" Height="24" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="179,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" AutomationProperties.Name="o3_height"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="323,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" RenderTransformOrigin="4.054,0.351" AutomationProperties.Name="o3_length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Style="{StaticResource general}" Margin="49,132,0,0" Width="31" Name="nameO3" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
+                <TextBox Style="{StaticResource general}" Margin="112,132,0,0" Width="31" Name="o3_width" Height="24"/>
+                <TextBox Style="{StaticResource general}" Height="23" Margin="179,133,0,0" Width="31" Name="o3_height"/>
+                <TextBox Style="{StaticResource general}" Height="23" Margin="323,133,0,0" Width="50" Name="o3_length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
 
-            <Label Content="длина:" HorizontalAlignment="Left" Margin="120,166,0,0" VerticalAlignment="Top"/>
-            <Label Content="звено 1" HorizontalAlignment="Left" Margin="11,166,0,0" VerticalAlignment="Top"/>
+            <Label Style="{StaticResource general}" Content="длина:" Margin="120,166,0,0" />
+            <Label Style="{StaticResource general}" Content="звено 1" Margin="11,166,0,0"/>
             <Grid DataContext="{Binding Element1}">
-                <TextBox HorizontalAlignment="Left" Margin="68,169,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="element1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top" />
-                <TextBox HorizontalAlignment="Left" Margin="177,169,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="element1_Length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top"/>
+                <TextBox Style="{StaticResource general}" Margin="68,169,0,0" Width="31" Name="element1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
+                <TextBox Style="{StaticResource general}" Margin="177,169,0,0" Width="31" Name="element1_Length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
             </Grid>
 
-            <Label Content="звено 2" HorizontalAlignment="Left" Margin="11,192,0,0" VerticalAlignment="Top"/>
+            <Label Style="{StaticResource general}" Content="звено 2" Margin="11,192,0,0"/>
             <Grid DataContext="{Binding Element2}">
-                <TextBox HorizontalAlignment="Left" Margin="68,197,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="element2" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Margin="177,197,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="element2_Length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top"/>
+                <TextBox Style="{StaticResource general}" Margin="68,197,0,0" Width="31" Name="element2" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
+                <TextBox Style="{StaticResource general}" Margin="177,197,0,0" Width="31" Name="element2_Length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
             </Grid>
 
-            <Label Content="звено 3" HorizontalAlignment="Left" Margin="11,223,0,0" VerticalAlignment="Top"/>
+            <Label Style="{StaticResource general}" Content="звено 3" Margin="11,223,0,0"/>
             <Grid DataContext="{Binding Element3}">
-                <TextBox HorizontalAlignment="Left" Margin="68,226,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="element3" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Margin="177,226,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="element3_Length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top"/>
+                <TextBox Style="{StaticResource general}" Margin="68,226,0,0" Width="31" Name="element3" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
+                <TextBox Style="{StaticResource general}" Margin="177,226,0,0" Width="31" Name="element3_Length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
             </Grid>
 
-            <Label Content="звено 4" HorizontalAlignment="Left" Margin="11,254,0,0" VerticalAlignment="Top"/>
+            <Label Style="{StaticResource general}" Content="звено 4" Margin="11,254,0,0"/>
             <Grid DataContext="{Binding Element4}">
-                <TextBox HorizontalAlignment="Left" Margin="68,257,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="element4" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Margin="177,257,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="element4_Length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top"/>
+                <TextBox Style="{StaticResource general}" Margin="68,257,0,0" Width="31" Name="element4" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
+                <TextBox Style="{StaticResource general}" Margin="177,257,0,0" Width="31" Name="element4_Length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
             </Grid>
 
-            <Label Content="звено 5" HorizontalAlignment="Left" Margin="11,285,0,0" VerticalAlignment="Top"/>
+            <Label Style="{StaticResource general}" Content="звено 5" Margin="11,285,0,0"/>
             <Grid DataContext="{Binding Element5}">
-                <TextBox HorizontalAlignment="Left" Margin="68,288,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="element5" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Margin="177,288,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="element5_Length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top"/>
+                <TextBox Style="{StaticResource general}" Margin="68,288,0,0" Width="31" Name="element5" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
+                <TextBox Style="{StaticResource general}" Margin="177,288,0,0" Width="31" Name="element5_Length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
             </Grid>
 
-            <Label Content="звено 6" HorizontalAlignment="Left" Margin="11,316,0,0" VerticalAlignment="Top"/>
+            <Label Style="{StaticResource general}" Content="звено 6" Margin="11,316,0,0"/>
             <Grid DataContext="{Binding Element6}">
-                <TextBox HorizontalAlignment="Left" Margin="68,319,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="element6" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Margin="177,319,0,0" TextWrapping="Wrap" Width="31" AutomationProperties.Name="element6_Length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}" Height="24" VerticalAlignment="Top"/>
+                <TextBox Style="{StaticResource general}" Margin="68,319,0,0" Width="31" Name="element6" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
+                <TextBox Style="{StaticResource general}" Margin="177,319,0,0" Width="31" Name="element6_Length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
             </Grid>
-            <Button x:Name="button" Content="создать" HorizontalAlignment="Left" Margin="235,322,0,0" VerticalAlignment="Top" Width="75" Click="button_Click_Create_RGR"/>
+            <Button Style="{StaticResource general}" x:Name="BtnCreateRGR" Content="создать" Margin="235,322,0,0" Width="75" Click="button_Click_Create_RGR"/>
+            <Button Style="{StaticResource general}" Name="BtnCloseCreateRGR" Content="назад" Margin="330, 322, 0, 0" Width="75" Click="BtnCloseCreateRGR_Click"/>
         </Grid>
     </Grid>
 </Window>

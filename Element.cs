@@ -52,9 +52,9 @@ namespace Work_Creator
             }
         }
 
-        public Element(String Elementname)
+        public Element(String ElementName)
         {
-            this.name = Elementname;
+            this.name = ElementName;
             this.length = 0;
             this.angularVelocity = 0;
             this.velocity = 0;

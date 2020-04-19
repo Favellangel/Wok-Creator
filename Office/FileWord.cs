@@ -2,21 +2,21 @@
 using System.Windows;
 using Word = Microsoft.Office.Interop.Word;
 
-namespace Work_Creator
+namespace Office
 {
     /// <summary>
-    /// Класс для работы с Doc файлами (создание, наполнение, сохранение)
+    /// Класс для работы с файлами от Microsoft Office (создание, сохранение, закрытие)
     /// </summary>
     /// <remarks>
     ///                      как работать с классом  
-    /// для начало нужно создать процесс WordOffice с помощью метода createDoc;
+    /// для начало нужно создать процесс файл с помощью метода createDoc;
     /// устанавливаем шаблон документа(шрифты, выравнивание, отступы итд) с помощью метода
     /// setDefaultOption... в завимости от вида работы;
     ///                                     делаем наполнение с помощью addContent... в завимости от вида работы; ????
     /// сохраняем документ с помощью метода saveDoc;
     /// закрываем документ с помощью метода closeDoc;
     /// </remarks>
- /*   public class FileWord 
+    public class FileWord
     {
         const string CM = "см/с";
         const string RAD = "рад/с";
@@ -34,7 +34,7 @@ namespace Work_Creator
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Word не получилось открыть:\n" + ex.Message);
+                //ex.Message;
             }
         }
         private void Test(string Name)
@@ -45,10 +45,10 @@ namespace Work_Creator
             Word.Range wordRange = wordDocument.Range(ref begin, ref end);
             for (int i = (int)begin; i < wordRange.Text.Length; i++)
             {
-                if(wordRange.Text[i] == 'O')
+                if (wordRange.Text[i] == 'O')
                 {
-                  wordRange.Text = wordRange.Text[i + 1].ToString();
-                  wordRange.Font.Subscript = 7;
+                    wordRange.Text = wordRange.Text[i + 1].ToString();
+                    wordRange.Font.Subscript = 7;
                 }
             }
             wordRange.Font.Size = 20;
@@ -59,7 +59,7 @@ namespace Work_Creator
             for (int i = 0; i < count; i++)
                 wordDocument.Paragraphs.Add(ref oMissing);
         }
-        internal void createDoc()
+        public void createDoc()
         {
             object template = Type.Missing;
             object newTemplate = false;
@@ -67,12 +67,12 @@ namespace Work_Creator
             object visible = true;
             wordDocument = wordApp.Documents.Add(ref template, ref newTemplate, ref documentType, ref visible);
         }
-        internal void setDefaultOptionRGR()
+        public void setDefaultOptionRGR()
         {
             wordDocument.Content.Font.Name = "Times New Roman";
             wordDocument.Content.Font.Size = 14;
         }
-        internal void addElementO1A(float WO1A, float O1A, float countV)
+        public void addElementO1A(float WO1A, float O1A, float countV)
         {
             addParagraph(2);
             wordParagraphs = wordDocument.Paragraphs;
@@ -81,9 +81,9 @@ namespace Work_Creator
             wordParagraph.Range.Text = "Звено " + "O1A" + ":";
             // параграф 2
             wordParagraph = (Word.Paragraph)wordParagraphs[2];
-            wordParagraph.Range.Text = "VA = WO1A * O1A = " + WO1A + " + " + O1A + " = " + countV +  " " + CM + ";";
+            wordParagraph.Range.Text = "VA = WO1A * O1A = " + WO1A + " + " + O1A + " = " + countV + " " + CM + ";";
         }
-        internal void addElements(Element element, Element elementO)
+        /*internal void addElements(Element element, Element elementO)
         {
             addParagraph(1);
             wordParagraphs = wordDocument.Paragraphs;
@@ -105,8 +105,8 @@ namespace Work_Creator
             addParagraph(1);
             wordParagraph = (Word.Paragraph)wordParagraphs.Last;
             wordParagraph.Range.Text = "W";
-        }
-        internal void saveDoc()
+        }*/
+        public void saveDoc()
         {
             object fileName = @"E:\New\test.doc";
             object fileFormat = Word.WdSaveFormat.wdFormatDocument;
@@ -131,7 +131,7 @@ namespace Work_Creator
                                  ref saveAsAOCELetter, ref encoding, ref insertLineBreaks,
                                  ref allowSubstitutions, ref lineEnding, ref addBiDiMarks);
         }
-        internal void closeDoc()
+        public void closeDoc()
         {
             object saveChanges = Word.WdSaveOptions.wdSaveChanges;
             object originalFormat = Word.WdOriginalFormat.wdWordDocument;
@@ -139,5 +139,5 @@ namespace Work_Creator
             wordApp.Quit(ref saveChanges, ref originalFormat, ref routeDocument);
             wordApp = null;
         }
-    }*/
+    }
 }

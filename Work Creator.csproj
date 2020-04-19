@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B34B15BE-D7F9-4744-9D66-C666C51B20EC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Wok_Creator</RootNamespace>
-    <AssemblyName>Wok Creator</AssemblyName>
+    <RootNamespace>Work_Creator</RootNamespace>
+    <AssemblyName>Work Creator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -56,7 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Element.cs" />
-    <Compile Include="ViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelRGRMechanic.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -127,7 +127,14 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <ProjectReference Include="Office\Office.csproj">
+      <Project>{b49a9087-67be-4524-be51-975059142d5a}</Project>
+      <Name>Office</Name>
+    </ProjectReference>
+    <ProjectReference Include="WordCore\WordCore.csproj">
+      <Project>{b9e329fe-8784-4221-8162-4f08c864d619}</Project>
+      <Name>WordCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
