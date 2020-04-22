@@ -64,10 +64,6 @@ namespace Work_Creator
         {
             return (length * angularVelocity);
         }
-        internal float DoubleLength(float length)
-        {
-            return length * 2;
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName]string prop = "")

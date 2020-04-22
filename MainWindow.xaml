@@ -27,8 +27,8 @@
             <Label Style="{StaticResource general}" Content="угл скорость" Margin="49,55,0,0"/>
             <Label Style="{StaticResource general}" Content="длина звена" Margin="179,55,0,0" Width="81"/>
             <Grid DataContext="{Binding ElementO1A}">
-                <TextBox Style="{StaticResource general}" Height="23" Margin="133,58,0,0" Width="38" AutomationProperties.Name="angularVelocity" Text="{Binding AngularVelocity, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox Style="{StaticResource general}" Height="23" Margin="260,58,0,0" Width="50" RenderTransformOrigin="0.106,0.956" Name="o1_length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Style="{StaticResource general}" Height="23" Margin="133,58,0,0" Width="38" Name="angularVelocity" Text="{Binding AngularVelocity, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Style="{StaticResource general}" Height="23" Margin="260,58,0,0" Width="50" Name="o1_length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
 
             <Label Style="{StaticResource general}" Content="O2:" Margin="11,96,0,0"/>
