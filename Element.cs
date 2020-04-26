@@ -9,12 +9,19 @@ using System.Runtime.CompilerServices;
 
 namespace Work_Creator
 {
+    public struct Point
+    {
+       public double x;
+       public double y;
+    }
     public class Element : INotifyPropertyChanged
     {
         private string name;
         private int length;
         private float angularVelocity;
         private float velocity;
+        private Point pBegin;
+        private Point pEnd;
         public string Name
         {
             get { return name; }
@@ -51,6 +58,24 @@ namespace Work_Creator
                 OnPropertyChanged("Velocity");
             }
         }
+        public Point PBegin
+        {
+            get { return pBegin; }
+            set
+            {
+                pBegin = value;
+                OnPropertyChanged("PBegin");
+            }
+        }
+        public Point PEnd
+        {
+            get { return pEnd; }
+            set
+            {
+                pEnd = value;
+                OnPropertyChanged("PEnd");
+            }
+        }
 
         public Element(String ElementName)
         {
@@ -58,6 +83,10 @@ namespace Work_Creator
             this.length = 0;
             this.angularVelocity = 0;
             this.velocity = 0;
+            this.pBegin.x = 0;
+            this.pBegin.y = 0;
+            this.pEnd.x = 0;
+            this.pEnd.y = 0;
         }
 
         internal float CountVelocity()

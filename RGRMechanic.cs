@@ -22,14 +22,31 @@ namespace Work_Creator
         Queue<Element> elements;
         Element tmpElem;
         FileWord fileWord;
+
         public RGRMechanic(object DataContext, string path)
         {
             vm = (ViewModelRGRMechanic)DataContext; // класс для взаимодействия логики и интерфейса
             elements = new Queue<Element>();
             tmpElem = new Element("");
             fileWord = new FileWord(path);
-            MathFunc.GetAngle(1, 1, 2, 2, 3, 3);
+            addElements();
         }
+        private void addElements()
+        {
+            if (vm.Element1.Name != "")
+                elements.Enqueue(vm.Element1);
+            if (vm.Element2.Name != "")
+                elements.Enqueue(vm.Element2);
+            if (vm.Element3.Name != "")
+                elements.Enqueue(vm.Element3);
+            if (vm.Element4.Name != "")
+                elements.Enqueue(vm.Element4);
+            if (vm.Element5.Name != "")
+                elements.Enqueue(vm.Element5);
+            if (vm.Element6.Name != "")
+                elements.Enqueue(vm.Element6);
+        }
+
         private string getVo1a()
         {
             return (vm.ElementO1A.AngularVelocity.ToString() + " + " +
@@ -52,22 +69,6 @@ namespace Work_Creator
                                     " = " + "o" + elements.First<Element>().Name[1] + 
                                         " * 2 = " + elements.First<Element>().Length + 
                                             " * 2 = " + (elements.First<Element>().Length * 2) + ";"); // нужно подставить скорость, а не длину
-        }
-
-        public void addElements()
-        {
-            if (vm.Element1.Name != "")
-                elements.Enqueue(vm.Element1);
-            if (vm.Element2.Name != "")
-                elements.Enqueue(vm.Element2);
-            if (vm.Element3.Name != "")
-                elements.Enqueue(vm.Element3);
-            if (vm.Element4.Name != "")
-                elements.Enqueue(vm.Element4);
-            if (vm.Element5.Name != "")
-                elements.Enqueue(vm.Element5);
-            if (vm.Element6.Name != "")
-                elements.Enqueue(vm.Element6);
         }
 
         public void createDocRGR()

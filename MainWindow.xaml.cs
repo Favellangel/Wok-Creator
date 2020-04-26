@@ -33,7 +33,6 @@ namespace Work_Creator
         {
             Cursor = Cursors.Wait;
             RGRMechanic rgr = new RGRMechanic(DataContext, path);
-            rgr.addElements();
             rgr.createDocRGR();
             Cursor = Cursors.Arrow;
         }

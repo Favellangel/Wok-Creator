@@ -35,9 +35,13 @@ namespace Office
             text = run.AppendChild(new Text(_paragraph));
         }
 
+        public void save()
+        {
+            wordDoc.MainDocumentPart.Document.Save();
+        }
+
         public void saveChangesAndClose()
         {
-            //wordDoc.MainDocumentPart.Document.Save(); // сохранить изменения
             wordDoc.Close();
         }
     }
