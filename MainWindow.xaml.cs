@@ -32,7 +32,7 @@ namespace Work_Creator
         private void button_Click_Create_RGR(object sender, RoutedEventArgs e)
         {
             Cursor = Cursors.Wait;
-            RGRMechanic rgr = new RGRMechanic(DataContext, path);
+            RGRmechanic rgr = new RGRmechanic(DataContext, path);
             rgr.createDocRGR();
             Cursor = Cursors.Arrow;
         }

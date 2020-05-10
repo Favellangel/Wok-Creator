@@ -109,12 +109,12 @@ namespace Work_Creator
             elementO1A = new Element("O1A");
             elementO2 = new Element("O2B"); 
             elementO3 = new Element("O3F");
-            element1 = new Element("11"); 
-            element2 = new Element("22"); 
-            element3 = new Element("33"); 
-            element4 = new Element("44"); 
-            element5 = new Element("55");
-            element6 = new Element("66"); 
+            element1 = new Element("ABC"); 
+            element2 = new Element("CED"); 
+            element3 = new Element("EF"); 
+            element4 = new Element(""); 
+            element5 = new Element("");
+            element6 = new Element(""); 
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName]string prop = "")

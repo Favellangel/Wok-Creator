@@ -11,15 +11,15 @@ namespace Work_Creator
 {
     public struct Point
     {
-       public double x;
-       public double y;
+        public double x;
+        public double y;
     }
     public class Element : INotifyPropertyChanged
     {
         private string name;
         private int length;
-        private float angularVelocity;
-        private float velocity;
+        private double angularVelocity;
+        private double velocity;
         private Point pBegin;
         private Point pEnd;
         public string Name
@@ -40,7 +40,7 @@ namespace Work_Creator
                 OnPropertyChanged("Length");
             }
         }
-        public float AngularVelocity
+        public double AngularVelocity
         {
             get { return angularVelocity; }
             set
@@ -49,7 +49,7 @@ namespace Work_Creator
                 OnPropertyChanged("AngularVelocity");
             }
         }
-        public float Velocity
+        public double Velocity
         {
             get { return velocity; }
             set
@@ -75,6 +75,24 @@ namespace Work_Creator
                 pEnd = value;
                 OnPropertyChanged("PEnd");
             }
+        } 
+        public double PEndX
+        {
+            get { return pEnd.x; }
+            set
+            {
+                pEnd.x = value;
+                OnPropertyChanged("PEndX");
+            }
+        }
+        public double PEndY
+        {
+            get { return pEnd.y; }
+            set
+            {
+                pEnd.y = value;
+                OnPropertyChanged("PEndY");
+            }
         }
 
         public Element(String ElementName)
@@ -89,7 +107,7 @@ namespace Work_Creator
             this.pEnd.y = 0;
         }
 
-        internal float CountVelocity()
+        internal double CountVelocity()
         {
             return (length * angularVelocity);
         }

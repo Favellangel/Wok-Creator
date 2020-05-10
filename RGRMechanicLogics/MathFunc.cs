@@ -21,11 +21,18 @@ namespace Work_Creator
             double ScalarMulVector = pBegin.x * pEnd.x + pBegin.y * pEnd.y;
             return  Math.Acos(ScalarMulVector / (lengthBegin * lengthEnd));
         }
-        
+
+        /// <summary>
+        /// угол через три стороны теругольника
+        /// </summary>
+        /// <param name="sideA">1 прилежащая сторона к неизвестному углу</param>
+        /// <param name="sideB">2 прилежащая сторона к неизвестному углу</param>
+        /// <param name="sideC">Противолежащая сторона к неизвестному углу</param>
+        /// <returns></returns>
         public static double GetAngle(double sideA, double sideB, double sideC)
         {
-
-            return 0;
+            return Math.Acos(Math.Pow(sideA, 2) + Math.Pow(sideB, 2) - Math.Pow(sideC, 2) /
+                        (2 * sideA * sideB));
         }
         /// <summary>
         /// сторона, через 2 стороны и угол между ними в треугольнике
@@ -40,6 +47,28 @@ namespace Work_Creator
                 Math.Pow(sideB, 2) - 
                     (2 * sideA * sideB * Math.Cos(angle));
             return Math.Sqrt(res);
+        }
+
+        /// <summary>
+        /// сторона, через 2 угла и сторону
+        /// </summary>
+        /// <param name="sideA"></param>
+        /// <param name="angleAlpha"></param>
+        /// <param name="angleSigma"></param>
+        /// <returns></returns>
+        public static double GetSide1(double sideA, double angleAlpha, double angleSigma)
+        {
+            return (sideA * Math.Sin(angleAlpha) / Math.Sin(angleSigma));
+        }
+
+        public static double GetX(double hypotenuse, double angle)
+        {
+            return (hypotenuse * Math.Sin(angle));
+        }
+
+        public static double GetY(double hypotenuse, double angle)
+        {
+            return (hypotenuse * Math.Cos(angle));
         }
     }
 }

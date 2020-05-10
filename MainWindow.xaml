@@ -37,8 +37,8 @@
             <Label Style="{StaticResource general}" Content="длина звена" Margin="235,96,0,0" Width="82"/>
             <Grid DataContext="{Binding ElementO2}">
                 <TextBox Style="{StaticResource general}" Margin="49,95,0,0" Width="31" Name="nameO2" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24"/>
-                <TextBox Style="{StaticResource general}" Height="23" Margin="112,96,0,0" Width="31" Name="o2_width"/>
-                <TextBox Style="{StaticResource general}" Height="23" Margin="179,99,0,0" Width="31" Name="o2_height"/>
+                <TextBox Style="{StaticResource general}" Height="23" Margin="112,96,0,0" Width="31" Name="o2_x" Text="{Binding PEndX, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Style="{StaticResource general}" Height="23" Margin="179,99,0,0" Width="31" Name="o2_y" Text="{Binding PEndY, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox Style="{StaticResource general}" Height="23" Margin="323,99,0,0" Width="50" Name="o2_length" Text="{Binding Length, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
 

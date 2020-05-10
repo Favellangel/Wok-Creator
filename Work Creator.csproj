@@ -60,8 +60,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Element.cs" />
-    <Compile Include="MathFunc.cs" />
-    <Compile Include="RGRMechanic.cs" />
+    <Compile Include="RGRMechanicLogics\MathFunc.cs" />
+    <Compile Include="RGRMechanicLogics\RGRmechanic1.cs" />
+    <Compile Include="RGRMechanicLogics\Triangle.cs" />
     <Compile Include="ViewModels\ViewModelRGRMechanic.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -117,10 +118,6 @@
     <ProjectReference Include="Office\Office.csproj">
       <Project>{b49a9087-67be-4524-be51-975059142d5a}</Project>
       <Name>Office</Name>
-    </ProjectReference>
-    <ProjectReference Include="WordCore\WordCore.csproj">
-      <Project>{b9e329fe-8784-4221-8162-4f08c864d619}</Project>
-      <Name>WordCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
