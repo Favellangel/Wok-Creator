@@ -4,6 +4,7 @@ using Office;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Work_Creator.RGRMechanic;
 
 namespace Work_Creator
 {
@@ -51,10 +52,11 @@ namespace Work_Creator
         }
         private void addElement01A()
         {
+            vm.ElementO1A.Velocity = vm.ElementO1A.CountVelocity();
             fileWord.addParagraph("Звено O1A:");
             fileWord.addParagraph("VA = WO1A * O1A = " + 
-                (vm.ElementO1A.AngularVelocity.ToString() + " + " +
-                    vm.ElementO1A.Length.ToString() + " = "
+                (vm.ElementO1A.AngularVelocity.ToString() +
+                    " + " + vm.ElementO1A.Length.ToString() + " = "
                         + vm.ElementO1A.CountVelocity().ToString() + " " + CM + ";"));
         }
         private void addElement(Element elementO)
@@ -72,31 +74,27 @@ namespace Work_Creator
             fileWord.addParagraph("V" + elements.First<Element>().Name[1] + 
                                     " = " + "o" + elements.First<Element>().Name[1] + 
                                         " * 2 = " + (GetVelocity() / 2).ToString() + 
-                                            " * 2 = " + GetVelocity().ToString() + ";"); // нужно подставить скорость, а не длину
+                                            " * 2 = " + GetVelocity().ToString() + ";"); // нужно подставить скорость, а не длину и подставлять значение, а не метод
         }
         private double GetVelocity()
         {
-            double angleBeta;
-            double angleSigma;
-            double sidePabcA;
-            double sidePabcB;
-            Point pBegin;
-            Point pEnd;
-            pBegin.x = -14.14;
-            pBegin.y = -14.14;
-            //vm.ElementO1A.PBegin.x = -14.14;
-            //vm.ElementO1A.PBegin.y = 14.14;
-            double sideC = MathFunc.GetSide(vm.ElementO1A.Length, vm.ElementO2.PEnd.x, 45);
-            double angleAlpha = MathFunc.GetAngle(vm.Element1.Length, vm.ElementO2.Length, sideC);
-            pEnd.x = MathFunc.GetX(vm.Element1.Length, angleAlpha);
-            pEnd.y = MathFunc.GetY(vm.Element1.Length, angleAlpha);
-            angleBeta =  MathFunc.GetAngle(pBegin, pEnd, vm.ElementO1A.Length, vm.Element1.Length);
-            angleSigma = 180 - angleAlpha + angleBeta;
+            Triangle trianglePabc = new Triangle();
+            Triangle triangleTmp = new Triangle();
+            vm.ElementO1A.PEndX = Triangle.GetX(vm.ElementO1A.Length, vm.Angle);
+            vm.ElementO1A.PEndY = Triangle.GetY(vm.ElementO1A.Length, vm.Angle);
+            vm.ElementO1A.PBeginX = -vm.ElementO1A.PEndX;
+            vm.ElementO1A.PBeginY = -vm.ElementO1A.PEndY;
+            triangleTmp.SideC = Triangle.GetSide(vm.ElementO1A.Length, vm.ElementO2.PEnd.x, vm.Angle);
+            trianglePabc.AngleAlpha = Triangle.GetAngle(vm.Element1.Length, vm.ElementO2.Length, triangleTmp.SideC);
+            vm.Element1.PEndX = Triangle.GetX(vm.Element1.Length, trianglePabc.AngleAlpha);
+            vm.Element1.PEndY = Triangle.GetY(vm.Element1.Length, trianglePabc.AngleAlpha);
+            trianglePabc.AngleBeta = MathExeptions.GetAngle(vm.ElementO1A.PBegin, vm.Element1.PEnd, vm.ElementO1A.Length, vm.Element1.Length);
+            trianglePabc.AngleSigma = 180 - trianglePabc.AngleAlpha - trianglePabc.AngleBeta;
+            trianglePabc.SideA = Triangle.GetSide1(vm.Element1.Length, trianglePabc.AngleAlpha, trianglePabc.AngleSigma);
+            trianglePabc.SideB = Triangle.GetSide1(vm.Element1.Length, trianglePabc.AngleBeta, trianglePabc.AngleSigma);
 
-            sidePabcA = MathFunc.GetSide1(vm.Element1.Length, angleAlpha, angleSigma);
-            sidePabcB = MathFunc.GetSide1(vm.Element1.Length, angleBeta, angleSigma);
-            vm.Element1.Velocity = vm.ElementO1A.Velocity * sidePabcB / sidePabcA;
-            return vm.Element1.Velocity;
+            vm.Element1.Velocity = vm.ElementO1A.Velocity * trianglePabc.SideB / trianglePabc.SideA;
+            return vm.Element1.Velocity; 
         }
         public void createDocRGR()
         {

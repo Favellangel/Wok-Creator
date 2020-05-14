@@ -60,8 +60,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Element.cs" />
-    <Compile Include="RGRMechanicLogics\MathFunc.cs" />
-    <Compile Include="RGRMechanicLogics\RGRmechanic1.cs" />
+    <Compile Include="RGRMechanicLogics\MathExeptions.cs" />
+    <Compile Include="RGRMechanicLogics\RGRmechanic.cs" />
     <Compile Include="RGRMechanicLogics\Triangle.cs" />
     <Compile Include="ViewModels\ViewModelRGRMechanic.cs" />
     <Page Include="MainWindow.xaml">

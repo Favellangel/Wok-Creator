@@ -63,7 +63,8 @@ namespace Work_Creator
             get { return pBegin; }
             set
             {
-                pBegin = value;
+                pBegin.x = value.x;
+                pBegin.y = value.y;
                 OnPropertyChanged("PBegin");
             }
         }
@@ -72,10 +73,29 @@ namespace Work_Creator
             get { return pEnd; }
             set
             {
-                pEnd = value;
+                pBegin.x = value.x;
+                pBegin.y = value.y;
                 OnPropertyChanged("PEnd");
             }
         } 
+        public double PBeginX
+        {
+            get { return pBegin.x; }
+            set
+            {
+                pBegin.x = value;
+                OnPropertyChanged("PBeginX");
+            }
+        }
+        public double PBeginY
+        {
+            get { return pBegin.y; }
+            set
+            {
+                pBegin.y = value;
+                OnPropertyChanged("PBeginY");
+            }
+        }
         public double PEndX
         {
             get { return pEnd.x; }
@@ -107,7 +127,7 @@ namespace Work_Creator
             this.pEnd.y = 0;
         }
 
-        internal double CountVelocity()
+        internal double CountVelocity() // перенести в Math Exeptions
         {
             return (length * angularVelocity);
         }
