@@ -21,6 +21,8 @@ namespace Work_Creator
         Queue<Element> elements;
         Element tmpElem;
         FileWord fileWord;
+        Triangle trianglePabc;
+        Triangle triangleTmp;
         /// <summary>
         /// 
         /// </summary>
@@ -32,6 +34,8 @@ namespace Work_Creator
             elements = new Queue<Element>();
             tmpElem = new Element("");
             fileWord = new FileWord(path);
+            Triangle trianglePabc = new Triangle();
+            Triangle triangleTmp = new Triangle();
             addElementsInList();
         }
 
@@ -57,7 +61,7 @@ namespace Work_Creator
             fileWord.addParagraph("VA = WO1A * O1A = " + 
                 (vm.ElementO1A.AngularVelocity.ToString() +
                     " + " + vm.ElementO1A.Length.ToString() + " = "
-                        + vm.ElementO1A.CountVelocity().ToString() + " " + CM + ";"));
+                        + vm.ElementO1A.Velocity.ToString() + " " + CM + ";"));
         }
         private void addElement(Element elementO)
         {
@@ -69,39 +73,53 @@ namespace Work_Creator
                                     " = " + "V" + elements.First<Element>().Name[0] + 
                                         " + V" + elements.First<Element>().Name[1] + 
                                             elements.First<Element>().Name[0] + ";");
-            
             // V(вторая буква звена) = о(вторая буква звена) * 2 = значение * 2 = результат + см / с + ;
+            elements.First<Element>().Velocity = GetVelocity();
             fileWord.addParagraph("V" + elements.First<Element>().Name[1] + 
                                     " = " + "o" + elements.First<Element>().Name[1] + 
-                                        " * 2 = " + (GetVelocity() / 2).ToString() + 
-                                            " * 2 = " + GetVelocity().ToString() + ";"); // нужно подставить скорость, а не длину и подставлять значение, а не метод
+                                        " * 2 = " + (elements.First<Element>().Velocity / 2).ToString() + 
+                                            " * 2 = " + elements.First<Element>().Velocity.ToString() + ";"); // нужно подставить скорость, а не длину и подставлять значение, а не метод
+        }
+        private void GetElementO1APEnd()
+        {
+            vm.ElementO1A.PEndX = Triangle.GetX(vm.ElementO1A.Length, vm.Angle);
+            vm.ElementO1A.PEndY = Triangle.GetY(vm.ElementO1A.Length, vm.Angle);
         }
         private double GetVelocity()
         {
-            Triangle trianglePabc = new Triangle();
-            Triangle triangleTmp = new Triangle();
-            vm.ElementO1A.PEndX = Triangle.GetX(vm.ElementO1A.Length, vm.Angle);
-            vm.ElementO1A.PEndY = Triangle.GetY(vm.ElementO1A.Length, vm.Angle);
-            vm.ElementO1A.PBeginX = -vm.ElementO1A.PEndX;
-            vm.ElementO1A.PBeginY = -vm.ElementO1A.PEndY;
             triangleTmp.SideC = Triangle.GetSide(vm.ElementO1A.Length, vm.ElementO2.PEnd.x, vm.Angle);
             trianglePabc.AngleAlpha = Triangle.GetAngle(vm.Element1.Length, vm.ElementO2.Length, triangleTmp.SideC);
-            vm.Element1.PEndX = Triangle.GetX(vm.Element1.Length, trianglePabc.AngleAlpha);
-            vm.Element1.PEndY = Triangle.GetY(vm.Element1.Length, trianglePabc.AngleAlpha);
-            trianglePabc.AngleBeta = MathExeptions.GetAngle(vm.ElementO1A.PBegin, vm.Element1.PEnd, vm.ElementO1A.Length, vm.Element1.Length);
+            triangleTmp.AngleAlpha = Triangle.GetAngle(vm.ElementO1A.Length, triangleTmp.SideC, vm.ElementO2.PEndX);
+            triangleTmp.AngleBeta = Triangle.GetAngle(vm.Element1.Length, triangleTmp.SideC, vm.ElementO2.Length);
+            trianglePabc.AngleBeta = triangleTmp.AngleAlpha + triangleTmp.AngleBeta;
             trianglePabc.AngleSigma = 180 - trianglePabc.AngleAlpha - trianglePabc.AngleBeta;
             trianglePabc.SideA = Triangle.GetSide1(vm.Element1.Length, trianglePabc.AngleAlpha, trianglePabc.AngleSigma);
             trianglePabc.SideB = Triangle.GetSide1(vm.Element1.Length, trianglePabc.AngleBeta, trianglePabc.AngleSigma);
-
-            vm.Element1.Velocity = vm.ElementO1A.Velocity * trianglePabc.SideB / trianglePabc.SideA;
-            return vm.Element1.Velocity; 
+            return (vm.ElementO1A.Velocity * trianglePabc.SideB / trianglePabc.SideA); 
+        }
+        private double GetVelocity1()
+        {
+            triangleTmp.AngleAlpha = Triangle.GetAngle1(vm.ElementO1A.Length, vm.Element1.Length, vm.Angle);
+            if (vm.Angle > 90)
+            {
+                trianglePabc.AngleBeta= 180 - vm.Angle - triangleTmp.AngleAlpha;
+                trianglePabc.AngleAlpha = 90 + triangleTmp.AngleAlpha;
+            }
+            else if (vm.Angle < 90)
+            {
+                trianglePabc.AngleBeta = vm.Angle + triangleTmp.AngleAlpha;
+                trianglePabc.AngleAlpha = 90 - triangleTmp.AngleAlpha;
+            }
+            trianglePabc.AngleSigma = 180 - trianglePabc.AngleAlpha - trianglePabc.AngleBeta;
+            trianglePabc.SideA = vm.Element1.Length * trianglePabc.AngleAlpha / trianglePabc.AngleSigma;
+            trianglePabc.SideB = vm.Element1.Length * trianglePabc.AngleBeta / trianglePabc.AngleSigma;
+            return 0;
         }
         public void createDocRGR()
         {
             addElement01A();
             while (elements.Count != 0)
-            {
-                // если 2 буква звена соответствует 2 букве звена О2*
+            {   // если 2 буква звена соответствует 2 букве звена О2*
                 if (elements.First<Element>().Name[1] == vm.ElementO2.Name[2]) 
                 {
                     addElement(vm.ElementO2);

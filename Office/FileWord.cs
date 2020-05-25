@@ -19,7 +19,6 @@ namespace Office
         Paragraph paragraph;
         Run run;
         Text text;
-
         public FileWord(string path)
         {
             wordDoc = WordprocessingDocument.Create(path, WordprocessingDocumentType.Document);
@@ -27,19 +26,16 @@ namespace Office
             mainPart.Document = new Document(new Body());
             body = mainPart.Document.Body;
         }
-
         public void addParagraph(string _paragraph)
         {
             paragraph = body.AppendChild(new Paragraph());
             run = paragraph.AppendChild(new Run());
             text = run.AppendChild(new Text(_paragraph));
         }
-
         public void save()
         {
             wordDoc.MainDocumentPart.Document.Save();
         }
-
         public void saveChangesAndClose()
         {
             wordDoc.Close();

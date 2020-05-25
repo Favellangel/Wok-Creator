@@ -82,6 +82,17 @@ namespace Work_Creator.RGRMechanic
             return MathExeptions.RadInDeg(Math.Acos( res ));
         }
         /// <summary>
+        /// угол через две стороны и угол(не обязательно между ними
+        /// </summary>
+        /// <param name="sideA">противолежащая сторона</param>
+        /// <param name="sideB">вторая сторона</param>
+        /// <param name="angle">угол</param>
+        /// <returns></returns>
+        public static double GetAngle1(double sideA, double sideB, double angle)
+        {
+            return sideB * Math.Sin(MathExeptions.DegInRad(angle)) / sideA;
+        }
+        /// <summary>
         /// сторона, через 2 стороны и угол между ними в треугольнике
         /// </summary>
         /// <param name="sideA">Первая сторона</param>
@@ -104,9 +115,8 @@ namespace Work_Creator.RGRMechanic
         /// <returns></returns>
         public static double GetSide1(double sideA, double angleAlpha, double angleSigma)
         {
-            return (sideA * Math.Sin(angleAlpha) / Math.Sin(angleSigma));
+            return (sideA * Math.Sin(MathExeptions.DegInRad(angleAlpha)) / Math.Sin(MathExeptions.DegInRad(angleSigma)));
         }
-
         // поменять названия
         public static double GetX(double hypotenuse, double angle)
         {   
