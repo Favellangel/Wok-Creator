@@ -119,7 +119,7 @@ namespace Work_Creator
         {
             this.name = ElementName;
             this.length = 0;
-            this.angularVelocity = 0;
+            this.angularVelocity = 1.33;
             this.velocity = 0;
             this.pBegin.x = 0;
             this.pBegin.y = 0;

@@ -23,6 +23,7 @@ namespace Work_Creator
         private Element element5;
         private Element element6;
         private double angle;
+        private int numScheme;
         
         public Element ElementO1A
         {
@@ -114,6 +115,15 @@ namespace Work_Creator
                 OnPropertyChanged("Angle");
             }
         }
+        public int NumScheme
+        {
+            get { return numScheme; }
+            set
+            {
+                numScheme = value;
+                OnPropertyChanged("NumScheme");
+            }
+        }
         public ViewModelRGRMechanic()
         {
             elementO1A = new Element("O1A");
@@ -126,6 +136,7 @@ namespace Work_Creator
             element5 = new Element("");
             element6 = new Element("");
             angle = 45;
+            numScheme = 0;
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName]string prop = "")

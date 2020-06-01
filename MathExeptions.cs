@@ -29,5 +29,14 @@ namespace Work_Creator
         {
             return (angle * 180) / Math.PI;
         }
+        /// <summary>
+        /// округляет число до большего целого
+        /// </summary>
+        /// <param name="d">число с плавающей точкой</param>
+        /// <returns></returns>
+        public static int round(double d)
+        {
+            return (((int)d) + 1);
+        }
     }
 }

@@ -22,6 +22,8 @@
         <Grid x:Name="GridRGR" Margin="20,20,15,15" Visibility="Hidden">
             <Label Style="{StaticResource general}" Content="угол"  Margin="10,10,0,0"/>
             <TextBox Style="{StaticResource general}" Height="23" Margin="49,13,0,0" Width="31" Name="angle" Text="{Binding Angle, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Style="{StaticResource general}" Content="номер схемы"  Margin="85,10,0,0"/>
+            <TextBox Style="{StaticResource general}" Height="23" Margin="170,13,0,0" Width="31" Name="numScheme" Text="{Binding NumScheme, UpdateSourceTrigger=PropertyChanged}"/>
 
             <Label Style="{StaticResource general}" Content="O1:" Margin="11,58,0,0" />
             <Label Style="{StaticResource general}" Content="угл скорость" Margin="49,55,0,0"/>

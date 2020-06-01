@@ -59,8 +59,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Element.cs" />
-    <Compile Include="RGRMechanicLogics\MathExeptions.cs" />
+    <Compile Include="RGRMechanicLogics\Element.cs" />
+    <Compile Include="MathExeptions.cs" />
     <Compile Include="RGRMechanicLogics\RGRmechanic.cs" />
     <Compile Include="RGRMechanicLogics\Triangle.cs" />
     <Compile Include="ViewModels\ViewModelRGRMechanic.cs" />

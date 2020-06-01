@@ -84,13 +84,16 @@ namespace Work_Creator.RGRMechanic
         /// <summary>
         /// угол через две стороны и угол(не обязательно между ними
         /// </summary>
-        /// <param name="sideA">противолежащая сторона</param>
+        /// <param name="sideA">противолежащая (к неизвестному углу) сторона</param>
         /// <param name="sideB">вторая сторона</param>
         /// <param name="angle">угол</param>
         /// <returns></returns>
         public static double GetAngle1(double sideA, double sideB, double angle)
         {
-            return sideB * Math.Sin(MathExeptions.DegInRad(angle)) / sideA;
+            double res = sideA * Math.Sin(MathExeptions.DegInRad(angle)) / sideB;
+            //int tmp = MathExeptions.round(res);
+            //res = tmp - res;
+            return MathExeptions.RadInDeg(Math.Asin(res));
         }
         /// <summary>
         /// сторона, через 2 стороны и угол между ними в треугольнике
