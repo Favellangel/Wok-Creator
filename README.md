@@ -1,7 +1,6 @@
 # Wok-Creator
-App for create documents laboratory works 
-программа задумывалась как инструмент для создания студенческих работ. 
+The program was conceived as a tool for creating student works.
 
-В ней я попробовал: 
-1)применить паттерн MVVM; 
-2)поработать со сторонними библитотеками.
+In it I tried:
+1) apply the MVVM pattern;
+2) work with third-party libraries.
